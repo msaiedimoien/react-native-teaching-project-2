@@ -1,9 +1,8 @@
+import React from "react";
 import {createAppContainer} from "react-navigation";
 import {createStackNavigator} from "react-navigation-stack";
 import IndexScreen from "./src/screens/IndexScreen";
-import {BlogProvider} from "./src/context/BlogContext";
-import {defaultProps} from "react-native-web/dist/modules/forwardedProps";
-import App from "react-native/template/App";
+import { Provider } from "./src/context/BlogContext";
 
 const navigator = createStackNavigator({
    Index: IndexScreen,
@@ -14,10 +13,10 @@ const navigator = createStackNavigator({
     }
 });
 
-export default createAppContainer(navigator);
+const App = createAppContainer(navigator);
 
 export default () => {
-    return <BlogProvider>
-        <App />
-    </BlogProvider>
+    return <Provider>
+        <App  />
+    </Provider>
 };
