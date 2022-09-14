@@ -31,8 +31,9 @@ const addBlogPost = dispatch => {
 };
 
 const editBlogPost = dispatch => {
-    return (title, content) => {
-        dispatch({type: 'edit_blogpost', payload: {title, content}})
+    return ( id, title, content, callback ) => {
+        dispatch({type: 'edit_blogpost', payload: { id, title, content }});
+        callback();
     };
 };
 
