@@ -1,0 +1,16 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "db": "json-server -w db.json -p 3600",
+    "tunnel": "ngrok http 3600"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.0",
+    "ngrok": "^4.3.3"
+  }
+}

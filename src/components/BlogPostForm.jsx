@@ -30,15 +30,20 @@ BlogPostForm.defaultProps = {
 
 const styles = StyleSheet.create({
     view: {
-        padding: 15,
-        paddingTop: 40,
+        margin: 15,
+        marginTop: 40,
+        padding: 20,
+        borderWidth: 1,
+        borderStyle: "dashed",
+        borderRadius: 15,
+        backgroundColor: 'white',
     },
 
     label: {
-        fontSize: 18,
+        fontSize: 16,
         marginBottom: 10,
         fontWeight: "600",
-        color: 'tomato'
+        color: 'orange'
     },
 
     input: {
