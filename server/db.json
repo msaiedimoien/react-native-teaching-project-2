@@ -4,6 +4,11 @@
       "id": "1",
       "title": "New Post",
       "content": "Content for new post above"
+    },
+    {
+      "title": "new post 2",
+      "content": "content for add new post 2",
+      "id": "E3qBu5L"
     }
   ]
 }

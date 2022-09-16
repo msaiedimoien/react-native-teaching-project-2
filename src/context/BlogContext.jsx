@@ -11,7 +11,7 @@ const blogReducer = (state, action) => {
         case 'add_blogpost':
             return [...state,
                 {
-                    id: Math.floor(Math.random() * 99999),
+                    id: action.payload.id,
                     title: action.payload.title,
                     content: action.payload.content
                 }];
@@ -38,10 +38,20 @@ const getBlogPosts = dispatch => {
 };
 
 const addBlogPost = dispatch => {
-    return ( title, content, callback ) => {
-        dispatch({type: 'add_blogpost', payload: {title, content}});
-        if (callback) {
-            callback();
+    return async (title, content, callback) => {
+        try {
+            const response = await jsonServer.post('/blogposts', {title, content});
+            const id = response.data.id;
+
+            if(response.status === 201)
+            {
+                dispatch({type: 'add_blogpost', payload: {id, title, content}});
+                if (callback) {
+                    callback();
+                }
+            }
+        } catch (err) {
+            alert(err);
         }
     };
 };
@@ -56,8 +66,16 @@ const editBlogPost = dispatch => {
 };
 
 const deleteBlogPost = dispatch => {
-    return (id) => {
-        dispatch({type: 'delete_blogpost', payload: id})
+    return async (id) => {
+        try {
+            const response = await jsonServer.delete(`/blogposts/${id}`);
+            if(response.status === 200)
+            {
+                dispatch({type: 'delete_blogpost', payload: id})
+            }
+        }catch (err) {
+            alert(err);
+        }
     };
 };
 
