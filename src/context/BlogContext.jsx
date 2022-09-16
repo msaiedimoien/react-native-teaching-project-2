@@ -57,10 +57,18 @@ const addBlogPost = dispatch => {
 };
 
 const editBlogPost = dispatch => {
-    return ( id, title, content, callback ) => {
-        dispatch({type: 'edit_blogpost', payload: { id, title, content }});
-        if (callback) {
-            callback();
+    return async (id, title, content, callback) => {
+        try {
+            const response = await jsonServer.put(`/blogposts/${id}`, {title, content});
+
+            if (response.status === 200) {
+                dispatch({type: 'edit_blogpost', payload: {id, title, content}});
+                if (callback) {
+                    callback();
+                }
+            }
+        } catch (err) {
+            alert(err);
         }
     };
 };
